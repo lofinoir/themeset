@@ -1,0 +1,185 @@
+/* Style the element that is used to open and close the accordion class */
+p.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  margin-bottom: 10px;
+}
+
+/* Add a background color to the accordion if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+p.accordion.active,
+p.accordion:hover {
+  background-color: #ddd;
+}
+
+/* Unicode character for "plus" sign (+) */
+p.accordion:after {
+  content: "\2795";
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Unicode character for "minus" sign (-) */
+p.accordion.active:after {
+  content: "\2796";
+}
+
+/* Style the element that is used for the panel class */
+
+div.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  opacity: 0;
+  margin-bottom: 10px;
+}
+
+div.panel.show {
+  opacity: 1;
+  max-height: 15000px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+
+/* end of accordion */
+/* SUB ACCORDION START */
+
+/* Style the element that is used to open and close the accordionsub class */
+p.accordionsub {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  margin-bottom: 10px;
+}
+
+/* Add a background color to the accordionsub if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+p.accordionsub.active,
+p.accordionsub:hover {
+  background-color: rgb(113, 113, 113);
+}
+
+/* Unicode character for "plus" sign (+) */
+p.accordionsub:after {
+  content: "\2795";
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+/* Unicode character for "minus" sign (-) */
+p.accordionsub.active:after {
+  content: "\2796";
+}
+
+/* Style the element that is used for the panel class */
+
+div.panelsub {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  opacity: 0;
+  margin-bottom: 10px;
+}
+
+div.panelsub.show {
+  opacity: 1;
+  max-height: 10000px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+
+/* SUB ACCORDION END */
+
+.alt-dropdown-hover {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.alt-dropdown-hover:hover .alt-dropdown-content {
+  display: block;
+}
+
+.alt-dropdown-hover:first-child {
+  background-color: #ccc;
+  color: #000;
+}
+
+.alt-dropdown-hover:hover > .w3-button:first-child,
+.w3-dropdown-click:hover > .w3-button:first-child {
+  background-color: #ccc;
+  color: #000;
+}
+
+.w3-bar-block .alt-dropdown-hover .alt-dropdown-content,
+.w3-bar-block .w3-dropdown-click .alt-dropdown-content {
+  min-width: 100%;
+}
+
+.w3-bar-block .alt-dropdown-hover .w3-button,
+.w3-bar-block .w3-dropdown-click .w3-button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+}
+
+.alt-dropdown-hover.w3-mobile .alt-dropdown-content,
+.w3-dropdown-click.w3-mobile .alt-dropdown-content {
+  position: relative;
+}
+
+.w3-bar-item.w3-mobile,
+.alt-dropdown-hover.w3-mobile,
+.w3-dropdown-click.w3-mobile {
+  text-align: center;
+}
+
+.alt-dropdown-hover.w3-mobile,
+.alt-dropdown-hover.w3-mobile .w3-btn,
+.alt-dropdown-hover.w3-mobile .w3-button,
+.w3-dropdown-click.w3-mobile,
+.w3-dropdown-click.w3-mobile .w3-btn,
+.w3-dropdown-click.w3-mobile .w3-button {
+  width: 100%;
+}
+
+.alt-dropdown-hover.w3-mobile .alt-dropdown-content,
+.w3-dropdown-click.w3-mobile .alt-dropdown-content {
+  position: relative;
+}
+
+.w3-bar-item.w3-mobile,
+.alt-dropdown-hover.w3-mobile,
+.w3-dropdown-click.w3-mobile {
+  text-align: center;
+}
+
+.alt-dropdown-hover:hover > .alt-button:first-child,
+.alt-dropdown-click:hover > .alt-button:first-child {
+  background-color: #ccc;
+  color: rgb(0, 217, 255);
+}
+
+/* <button style="text-align: right;"> */
+
+.w3-bar-block .alt-dropdown-hover .alt-button,
+.w3-bar-block .alt-dropdown-click .alt-button {
+  width: 100%;
+  text-align: right;
+  padding: 8px 16px;
+}
