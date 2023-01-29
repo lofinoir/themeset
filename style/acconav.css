@@ -16,7 +16,7 @@
   #myModal {
     padding: 50px;
     top: 25px;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(200px);
     background-color: #00000080;
   }
 }
@@ -31,7 +31,7 @@
   position: absolute;
   cursor: pointer;
   color: white;
-  background-color: #000;
+  /* background-color: #000; */
   font-size: 25px;
 }
 
