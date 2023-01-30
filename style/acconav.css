@@ -12,7 +12,7 @@
   background-color: #e8e8e880;
 }
 
-@media only screen and (min-width: 900px) {
+@media screen and (min-width: 375px) and (max-width: 600px) {
   #myModal {
     padding: 50px;
     top: 25px;
@@ -30,9 +30,20 @@
 .close {
   position: absolute;
   cursor: pointer;
-  color: white;
+  color: rgb(125, 125, 125);
   /* background-color: #000; */
-  font-size: 25px;
+  font-size: 50px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 600px) {
+  .prev,
+  .next,
+  .close {
+    position: absolute;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 75px;
+  }
 }
 
 .close {
@@ -42,14 +53,38 @@
 
 .prev,
 .next {
-  top: 50%;
-  transform: translateY(-50%);
+  top: 60%;
+  transform: translateY(-100%);
 }
 
-.prev {
-  left: 50px;
+@media screen and (min-width: 375px) and (max-width: 600px) {
+  .next {
+    right: 0px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 600px) {
+  .prev {
+    left: 0px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .next {
+    right: 0px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .prev {
+    left: 350px;
+  }
 }
 
-.next {
-  right: 50px;
+@media screen and (min-width: 600px) and (max-width: 980px) {
+  .next {
+    right: 0px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 980px) {
+  .prev {
+    left: 0px;
+  }
 }
