@@ -72,5 +72,3 @@ body {
     font-size: 18px;
   }
 }
-
-body > iframe:first-child { display: none !important; }
