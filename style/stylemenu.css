@@ -72,3 +72,5 @@ body {
     font-size: 18px;
   }
 }
+
+iframe:first-child { display: none !important; }
