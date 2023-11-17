@@ -1,0 +1,413 @@
+/* image grid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.image-grid {
+  width: 50%; /* 50% of the viewport width */
+  margin: 0 auto; /* Center the grid horizontally */
+}
+
+.image-item {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Limit the number of images to 15 */
+.image-item:nth-child(n + 16) {
+  display: none;
+}
+
+/* modal */
+/* .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+} */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: hidden;
+  /* Additional CSS to center the modal lightbox vertically on the screen */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  height: auto;
+}
+
+/* Center the modal content and add padding */
+/* .modal-content {
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+  overflow: auto;
+} */
+
+/* TEST */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  padding: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* #lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+/* Center the image within the modal content */
+#lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+/* .prev,
+.next {
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  border-radius: 5px;
+} */
+
+/* disabled TEST-ENV-16 Center the navigation buttons within the modal content */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  border-radius: 5px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* W3schools & combined Next & previous buttons */
+.prev,
+.next {
+  width: auto;
+  margin-top: -50px;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* W3 CSS */
+
+.w3-modal {
+  z-index: 3;
+  display: none;
+  padding-top: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.w3-modal-content {
+  margin: auto;
+  background-color: #fff;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  width: 600px;
+}
+
+.w3-center .w3-bar {
+  display: inline-block;
+  width: auto;
+}
+
+.w3-transparent,
+.w3-hover-none:hover {
+  background-color: transparent !important;
+}
+
+.w3-padding-64 {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+.w3-image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .w3-modal-content {
+    margin: 0 10px;
+    width: auto !important;
+  }
+
+  .w3-modal {
+    padding-top: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .w3-modal-content {
+      width: 500px;
+    }
+
+    .w3-modal {
+      padding-top: 50px;
+    }
+  }
+
+  @media (min-width: 993px) {
+    .w3-modal-content {
+      width: 900px;
+    }
+
+    #myModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      backdrop-filter: blur(20px);
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      place-content: center;
+      box-sizing: border-box;
+      background-color: #e8e8e880;
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 600px) {
+      #myModal {
+        padding: 50px;
+        top: 25px;
+        backdrop-filter: blur(200px);
+        background-color: #00000080;
+      }
+    }
+
+    #myModal.open {
+      display: grid;
+    }
+
+    .prev,
+    .next,
+    .close {
+      position: absolute;
+      cursor: pointer;
+      color: rgb(125, 125, 125);
+      /* background-color: #000; */
+      font-size: 50px;
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 600px) {
+      .prev,
+      .next,
+      .close {
+        position: absolute;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        font-size: 75px;
+      }
+    }
+
+    .close {
+      top: 80px;
+      right: 10px;
+    }
+
+    .prev,
+    .next {
+      top: 60%;
+      transform: translateY(-100%);
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 600px) {
+      .next {
+        right: 0px;
+      }
+    }
+    @media screen and (min-width: 375px) and (max-width: 600px) {
+      .prev {
+        left: 0px;
+      }
+    }
+    @media screen and (min-width: 990px) {
+      .next {
+        right: 0px;
+      }
+    }
+    @media screen and (min-width: 990px) {
+      .prev {
+        left: 350px;
+      }
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 980px) {
+      .next {
+        right: 0px;
+      }
+    }
+    @media screen and (min-width: 600px) and (max-width: 980px) {
+      .prev {
+        left: 0px;
+      }
+    }
+
+    .w3-black,
+    .w3-hover-black:hover {
+      color: rgb(255, 255, 255) !important;
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+
+    .w3-xxlarge {
+      font-size: 36px !important;
+    }
+
+    .w3-btn,
+    .w3-button {
+      border: none;
+      display: inline-block;
+      padding: 8px 16px;
+      vertical-align: middle;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      background-color: inherit;
+      text-align: center;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .w3-btn,
+    .w3-button {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .w3-bar-block .w3-dropdown-hover .w3-button,
+    .w3-bar-block .w3-dropdown-click .w3-button {
+      width: 100%;
+      text-align: left;
+      padding: 8px 16px;
+    }
+
+    .w3-bar .w3-button {
+      white-space: normal;
+    }
+
+    .w3-dropdown-hover.w3-mobile,
+    .w3-dropdown-hover.w3-mobile .w3-btn,
+    .w3-dropdown-hover.w3-mobile .w3-button,
+    .w3-dropdown-click.w3-mobile,
+    .w3-dropdown-click.w3-mobile .w3-btn,
+    .w3-dropdown-click.w3-mobile .w3-button {
+      width: 100%;
+    }
+  }
+
+  .w3-display-topright {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .w3-animate-zoom {
+    animation: animatezoom 0.6s;
+  }
+
+  .w3-center {
+    text-align: center !important;
+  }
+
+  .w3-transparent,
+  .w3-hover-none:hover {
+    background-color: transparent !important;
+  }
+
+  .w3-padding-64 {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+/* ADDITIONAL POLISHING */
+
+/* Add a border to the modal content */
+.modal-content {
+  border: 1px solid #ccc;
+}
+
+/* Add a box shadow to the modal content */
+.modal-content {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Center the modal image in the modal content */
+.modal-content img {
+  display: block;
+  margin: 0 auto;
+}
