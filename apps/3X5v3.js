@@ -17,33 +17,24 @@ $(document).ready(function () {
   //   );
   // }
 
-  function loadImages() {
-    let scrollPosition = $(window).scrollTop(); // Save scroll position
+function loadImages() {
+    let scrollPosition = $(window).scrollTop();
 
     $.getJSON("https://lofinoir.github.io/themeset/apps/images.json", function (data) {
         images = data;
         shuffleArray(images);
         createImageElements();
-
-        $(window).scrollTop(scrollPosition); // Restore scroll position
+        $(window).scrollTop(scrollPosition);
     });
 }
 
-// Run auto-refresh **only** on desktop (fixing mobile reload issue)
-if ($(window).width() > 768) { 
+// Auto-refresh **only on desktop** to prevent mobile refresh issues
+if ($(window).width() > 768) {
     setInterval(createImageElements, 10000);
+} else {
+    loadImages(); // Mobile loads images once only
 }
 
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = getRandomInt(0, i);
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
 
   // function createImageElements() {
   //   const imageGrid = $(".image-grid");
@@ -66,38 +57,35 @@ if ($(window).width() > 768) {
   // }
 
 
-  function createImageElements() {
+function createImageElements() {
     const imageGrid = $(".image-grid");
-    
-    // Ensure the container remains visible
-    imageGrid.css("display", "block");
 
-    // Prevent layout shift while updating
-    imageGrid.css("min-height", imageGrid.height() + "px");
+    // Ensure the container is always visible
+    imageGrid.css("display", "block");
+    
+    // Store existing height to prevent shifting
+    let currentHeight = imageGrid.outerHeight();
+    imageGrid.css("min-height", currentHeight + "px");
+
+    // Update images with minimal DOM changes
+    let newContent = "";
+    images.forEach((image, index) => {
+        newContent += `<img src="${image}" class="image-item" data-index="${index}">`;
+    });
 
     imageGrid.fadeOut(200, function () {
-        imageGrid.empty();
-        images.forEach((image, index) => {
-            const imgElement = $("<img>")
-                .attr("src", image)
-                .addClass("image-item");
-
-            imgElement.click(function () {
-                currentIndex = index;
-                displayLightbox();
-            });
-
-            imageGrid.append(imgElement);
-        });
-
+        imageGrid.html(newContent); // Replace content all at once
         imageGrid.fadeIn(200, function () {
-            imageGrid.css("min-height", "auto");
+            imageGrid.css("min-height", "auto"); // Reset height after load
         });
     });
+
+    // Re-attach click event
+    $(".image-item").off("click").on("click", function () {
+        currentIndex = $(this).data("index");
+        displayLightbox();
+    });
 }
-
-
-
   
   function displayLightbox() {
     const lightbox = $("#lightbox");
