@@ -28,26 +28,52 @@ $(document).ready(function () {
     }
   }
 
+  // function createImageElements() {
+  //   const imageGrid = $(".image-grid");
+  //   let currentHeight = imageGrid.height(); // Preserve height
+    
+  //   imageGrid.fadeOut(200, function () {
+  //     imageGrid.empty();
+  //     images.forEach((image, index) => {
+  //       const imgElement = $("<img>").attr("src", image).addClass("image-item");
+  //       imgElement.click(function () {
+  //         currentIndex = index;
+  //         displayLightbox();
+  //       });
+  //       imageGrid.append(imgElement);
+  //     });
+      
+  //     imageGrid.css("height", currentHeight + "px"); // Maintain height
+  //     imageGrid.fadeIn(200);
+  //   });
+  // }
+
+
   function createImageElements() {
     const imageGrid = $(".image-grid");
-    let currentHeight = imageGrid.height(); // Preserve height
     
-    imageGrid.fadeOut(200, function () {
-      imageGrid.empty();
-      images.forEach((image, index) => {
-        const imgElement = $("<img>").attr("src", image).addClass("image-item");
-        imgElement.click(function () {
-          currentIndex = index;
-          displayLightbox();
-        });
-        imageGrid.append(imgElement);
-      });
-      
-      imageGrid.css("height", currentHeight + "px"); // Maintain height
-      imageGrid.fadeIn(200);
-    });
-  }
+    // Prevent container collapse without forcing height
+    imageGrid.css("min-height", imageGrid.height() + "px");
 
+    imageGrid.fadeOut(200, function () {
+        imageGrid.empty();
+        images.forEach((image, index) => {
+            const imgElement = $("<img>").attr("src", image).addClass("image-item");
+            imgElement.click(function () {
+                currentIndex = index;
+                displayLightbox();
+            });
+            imageGrid.append(imgElement);
+        });
+
+        imageGrid.fadeIn(200, function () {
+            imageGrid.css("min-height", "auto"); // Allow normal behavior after update
+        });
+    });
+}
+
+
+  
   function displayLightbox() {
     const lightbox = $("#lightbox");
     const lightboxImage = $("#lightbox-image");
