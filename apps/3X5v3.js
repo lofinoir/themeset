@@ -2,20 +2,37 @@ $(document).ready(function () {
   let images = [];
   let currentIndex = 0;
 
+  // function loadImages() {
+  //   let scrollPosition = $(window).scrollTop(); // Save scroll position
+    
+  //   $.getJSON(
+  //     "https://lofinoir.github.io/themeset/apps/images.json",
+  //     function (data) {
+  //       images = data;
+  //       shuffleArray(images);
+  //       createImageElements();
+        
+  //       $(window).scrollTop(scrollPosition); // Restore scroll position
+  //     }
+  //   );
+  // }
+
   function loadImages() {
     let scrollPosition = $(window).scrollTop(); // Save scroll position
-    
-    $.getJSON(
-      "https://lofinoir.github.io/themeset/apps/images.json",
-      function (data) {
+
+    $.getJSON("https://lofinoir.github.io/themeset/apps/images.json", function (data) {
         images = data;
         shuffleArray(images);
         createImageElements();
-        
+
         $(window).scrollTop(scrollPosition); // Restore scroll position
-      }
-    );
-  }
+    });
+}
+
+// Run auto-refresh **only** on desktop (fixing mobile reload issue)
+if ($(window).width() > 768) { 
+    setInterval(createImageElements, 10000);
+}
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -52,25 +69,33 @@ $(document).ready(function () {
   function createImageElements() {
     const imageGrid = $(".image-grid");
     
-    // Prevent container collapse without forcing height
+    // Ensure the container remains visible
+    imageGrid.css("display", "block");
+
+    // Prevent layout shift while updating
     imageGrid.css("min-height", imageGrid.height() + "px");
 
     imageGrid.fadeOut(200, function () {
         imageGrid.empty();
         images.forEach((image, index) => {
-            const imgElement = $("<img>").attr("src", image).addClass("image-item");
+            const imgElement = $("<img>")
+                .attr("src", image)
+                .addClass("image-item");
+
             imgElement.click(function () {
                 currentIndex = index;
                 displayLightbox();
             });
+
             imageGrid.append(imgElement);
         });
 
         imageGrid.fadeIn(200, function () {
-            imageGrid.css("min-height", "auto"); // Allow normal behavior after update
+            imageGrid.css("min-height", "auto");
         });
     });
 }
+
 
 
   
