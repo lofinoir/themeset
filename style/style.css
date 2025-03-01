@@ -53,14 +53,14 @@ body.menu-show {
 }
 
 a {
-  color: #ca82f8;
+  color: #898989;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover {
   text-decoration: underline;
-  color: #ca82f8;
+  color: #898989;
 }
 a:focus,
 a:active {
@@ -1296,9 +1296,9 @@ header .colorlib-navbar-brand .colorlib-logo:focus {
 }
 
 .btn-primary {
-  background: #ca82f8;
+  background: #898989;
   color: #fff;
-  border: 2px solid #ca82f8;
+  border: 2px solid #898989;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -1314,7 +1314,7 @@ header .colorlib-navbar-brand .colorlib-logo:focus {
 .btn-primary.btn-outline:hover,
 .btn-primary.btn-outline:focus,
 .btn-primary.btn-outline:active {
-  background: #ca82f8;
+  background: #898989;
   color: #fff;
 }
 
