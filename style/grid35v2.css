@@ -1,99 +1,137 @@
-/* image grid */
+/* FILE: grid35v2.css (Complete and Revised) */
+/*
+  This file contains all the necessary styles for the full-width image grid and the lightbox modal.
+  It is designed to be a direct replacement for your existing file.
+*/
+
+
+/* ============================================= */
+/* === 1. Full-Width Image Grid Styles === */
+/* ============================================= */
+
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    /* 5 columns on desktop for a 5x3 grid with 15 images */
+    grid-template-columns: repeat(5, 1fr); 
+    /* A small gap for the tight masonry look */
+    gap: 5px; 
 }
 
-.image-grid {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.image-item {
-    width: 100%;
-    padding: 10px;
-    text-align: center;
+/* This is the container for each image */
+.grid-item {
+    overflow: hidden; /* Important for the zoom-on-hover effect */
     cursor: pointer;
-    object-fit: cover;
-    object-position: center center;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Creates a perfect square aspect ratio */
+    position: relative;
+    background-color: #f0f0f0; /* Light placeholder color */
 }
 
-.image-item:nth-child(n + 16) {
-    display: none;
-}
-
-/* modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
+.grid-item img {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: hidden;
-}
-
-.modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    background-color: white;
-    padding: 20px;
-    overflow: auto;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
+    top: 0;
+    left: 0;
+    object-fit: cover; /* This is the key: prevents stretching, fills the box */
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Responsive adjustments for tablets and phones (3 columns) */
+@media (max-width: 768px) {
+    .image-grid {
+        /* 3 columns on mobile for a 3x5 grid with 15 images */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px; /* Even tighter gap for mobile */
+    }
+}
+
+
+/* ============================================= */
+/* === 2. Lightbox Modal Styles === */
+/* ============================================= */
+
+#lightbox.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10000; /* Ensure it's on top of everything */
+    padding: 0; 
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9);
 }
 
 #lightbox-image {
+    margin: auto;
     display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto;
-    will-change: transform;
-}
-
-.prev,
-.next {
     position: absolute;
     top: 50%;
-    font-size: 20px;
-    color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+
+/* ============================================= */
+/* === 3. Modal Navigation & Close Button === */
+/* ============================================= */
+
+/* Style for Previous and Next Buttons */
+.prev,
+.next {
     cursor: pointer;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-decoration: none;
-    border-radius: 5px;
+    position: absolute;
+    top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s ease;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0,0,0,0.6);
 }
 
 .prev {
-    left: 10px;
+    left: 0;
+    border-radius: 0 3px 3px 0;
 }
 
 .next {
-    right: 10px;
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
-@media (max-width: 600px) {
-    .prev,
-    .next,
-    .close {
-        font-size: 50px;
-    }
+
+/* Style for the Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
 }
