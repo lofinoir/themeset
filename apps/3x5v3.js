@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     // Auto-refresh the grid every 10 seconds, but ONLY on desktop screens
     if ($(window).width() > 768) {
-        setInterval(createImageElements, 10000);
+        setInterval(createImageElements, 89000);
     }
     
     // Load the images when the page is ready
